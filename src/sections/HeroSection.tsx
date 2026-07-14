@@ -12,7 +12,7 @@ export function HeroSection() {
       <h1 className="font-display text-[clamp(2.6rem,7vw,5.75rem)] font-semibold leading-[0.95] text-paper">
         {copy.headline}
         <br />
-        <em className="font-light italic text-gold-bright">{copy.headlineItalic}</em>
+        <em className="font-light italic text-brand-bright">{copy.headlineItalic}</em>
       </h1>
       <p className="max-w-md text-sm font-light leading-relaxed text-mist sm:text-base">
         {copy.body}

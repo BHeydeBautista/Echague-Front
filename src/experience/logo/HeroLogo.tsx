@@ -25,9 +25,9 @@ function glowSprite() {
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
   const g = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
-  g.addColorStop(0, "rgba(243,215,143,0.55)");
-  g.addColorStop(0.5, "rgba(207,168,102,0.18)");
-  g.addColorStop(1, "rgba(207,168,102,0)");
+  g.addColorStop(0, "rgba(188,216,255,0.55)");
+  g.addColorStop(0.5, "rgba(125,147,194,0.2)");
+  g.addColorStop(1, "rgba(125,147,194,0)");
   ctx.fillStyle = g;
   ctx.fillRect(0, 0, size, size);
   const tex = new THREE.CanvasTexture(canvas);
@@ -104,14 +104,14 @@ export function HeroLogo() {
 
       <group ref={outer}>
         <Float floatIntensity={0.7} rotationIntensity={0.35} speed={1.4}>
-          {/* gold trim, slightly larger, sits behind the navy plinth */}
+          {/* brand-blue chrome trim, slightly larger, sits behind the navy plinth */}
           <mesh geometry={frameGeo} position={[0, 0, -0.08]} castShadow receiveShadow>
             <meshStandardMaterial
-              color="#cda866"
+              color="#a9c1e2"
               metalness={0.9}
-              roughness={0.28}
-              emissive="#5c4416"
-              emissiveIntensity={0.25}
+              roughness={0.25}
+              emissive="#2c3f66"
+              emissiveIntensity={0.3}
             />
           </mesh>
 

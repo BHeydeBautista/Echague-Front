@@ -4,8 +4,10 @@ import { useFrame } from "@react-three/fiber";
 import { useMemo, useRef } from "react";
 import * as THREE from "three";
 
-const COUNT = 140;
-const MIN_Y = -2.4;
+const COUNT = 220;
+const MIN_Y = -2.0;
+// Bubbles rise and pop right at the water surface rather than drifting up
+// into the open air above the pool.
 const MAX_Y = 1.2;
 
 export function Bubbles() {

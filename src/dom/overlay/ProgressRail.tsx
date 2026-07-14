@@ -18,13 +18,13 @@ export function ProgressRail() {
 
   return (
     <div className="fixed right-6 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-4 sm:right-10 lg:flex">
-      <span className="font-display text-xs tracking-widest text-gold">
+      <span className="font-display text-xs tracking-widest text-brand-bright">
         {SECTION_COPY[activeSection].index}
       </span>
       <div className="relative h-32 w-px bg-paper/15">
         <div
           ref={fillRef}
-          className="absolute left-0 top-0 w-px bg-gradient-to-b from-gold to-cyan"
+          className="absolute left-0 top-0 w-px bg-gradient-to-b from-brand-bright to-brand"
         />
       </div>
       <span className="kicker text-mist">

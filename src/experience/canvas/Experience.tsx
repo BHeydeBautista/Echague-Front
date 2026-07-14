@@ -1,21 +1,7 @@
 "use client";
 
-import { Canvas, useThree } from "@react-three/fiber";
+import { Canvas } from "@react-three/fiber";
 import { Suspense } from "react";
-import * as THREE from "three";
-
-function DebugExposer() {
-  const { scene, camera } = useThree();
-  if (typeof window !== "undefined") {
-    // @ts-expect-error debug-only
-    window.__scene = scene;
-    // @ts-expect-error debug-only
-    window.__camera = camera;
-    // @ts-expect-error debug-only
-    window.THREE = THREE;
-  }
-  return null;
-}
 import { CameraRig } from "@/src/experience/camera/CameraRig";
 import { Lighting } from "@/src/experience/lighting/Lighting";
 import { Particles } from "@/src/experience/canvas/Particles";
@@ -39,7 +25,6 @@ export function Experience() {
         camera={{ position: [0, 0.3, 7.6], fov: 38, near: 0.1, far: 130 }}
       >
         <color attach="background" args={["#04060b"]} />
-        <DebugExposer />
         <CameraRig />
         <Lighting />
         <Suspense fallback={null}>

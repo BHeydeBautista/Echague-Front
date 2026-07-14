@@ -6,13 +6,14 @@
   --color-navy-900: #0a0f1c;
   --color-navy-800: #10182c;
   --color-navy-700: #182238;
-  --color-steel: #7f9dc0;
-  --color-steel-light: #b7c8e0;
-  --color-gold: #cda866;
-  --color-gold-bright: #f3d78f;
+  /* Brand blue sampled directly from the club crest — the single source of
+   * truth for every accent, glow and highlight across the site. */
+  --color-brand: #7d93c2;
+  --color-brand-light: #a9c1e2;
+  --color-brand-bright: #bcd8ff;
+  --color-brand-dim: #3c5178;
   --color-mist: #9aa3b2;
   --color-paper: #f2f3f6;
-  --color-cyan: #5fd8e8;
 
   --font-display: "Fraunces", serif;
   --font-body: "Inter", sans-serif;
@@ -24,13 +25,12 @@
   --color-navy-900: var(--color-navy-900);
   --color-navy-800: var(--color-navy-800);
   --color-navy-700: var(--color-navy-700);
-  --color-steel: var(--color-steel);
-  --color-steel-light: var(--color-steel-light);
-  --color-gold: var(--color-gold);
-  --color-gold-bright: var(--color-gold-bright);
+  --color-brand: var(--color-brand);
+  --color-brand-light: var(--color-brand-light);
+  --color-brand-bright: var(--color-brand-bright);
+  --color-brand-dim: var(--color-brand-dim);
   --color-mist: var(--color-mist);
   --color-paper: var(--color-paper);
-  --color-cyan: var(--color-cyan);
   --font-display: var(--font-display);
   --font-body: var(--font-body);
 }
@@ -53,7 +53,7 @@ body {
 }
 
 ::selection {
-  background: var(--color-gold);
+  background: var(--color-brand-bright);
   color: var(--color-navy-950);
 }
 
@@ -79,7 +79,7 @@ html.lenis body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: linear-gradient(var(--color-steel), var(--color-gold));
+  background: linear-gradient(var(--color-brand), var(--color-brand-bright));
   border-radius: 3px;
 }
 
@@ -93,7 +93,7 @@ html.lenis body {
   font-size: 0.72rem;
   letter-spacing: 0.32em;
   text-transform: uppercase;
-  color: var(--color-gold);
+  color: var(--color-brand-bright);
 }
 
 .text-balance-pretty {

@@ -12,7 +12,7 @@ export function BasketballSection() {
       <h2 className="font-display text-[clamp(2.2rem,5.5vw,4.25rem)] font-semibold leading-[0.98] text-paper">
         {copy.headline}
         <br />
-        <em className="font-light italic text-gold-bright">{copy.headlineItalic}</em>
+        <em className="font-light italic text-brand-bright">{copy.headlineItalic}</em>
       </h2>
       <p className="max-w-sm text-sm font-light leading-relaxed text-mist sm:text-base">
         {copy.body}

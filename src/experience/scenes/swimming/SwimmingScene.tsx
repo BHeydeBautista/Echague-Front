@@ -1,22 +1,18 @@
 "use client";
 
-import { Suspense } from "react";
-import { ModelErrorBoundary } from "@/src/experience/scenes/ErrorBoundary";
+import { useSceneVisibility } from "@/src/experience/scenes/useSceneVisibility";
 import { Pool } from "./Pool";
 import { Bubbles } from "./Bubbles";
 import { Swimmer } from "./Swimmer";
-import { SwimmerFallback } from "./SwimmerFallback";
 
 export function SwimmingScene() {
+  const visibilityRef = useSceneVisibility("swimming");
+
   return (
-    <group name="swimming-root" position={[0, -1.4, -34]}>
+    <group ref={visibilityRef} name="swimming-root" position={[0, -1.4, -34]}>
       <Pool />
       <Bubbles />
-      <ModelErrorBoundary fallback={<SwimmerFallback />}>
-        <Suspense fallback={null}>
-          <Swimmer />
-        </Suspense>
-      </ModelErrorBoundary>
+      <Swimmer />
     </group>
   );
 }

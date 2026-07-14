@@ -13,7 +13,7 @@ export function OutroSection() {
         <h2 className="font-display text-[clamp(2.4rem,6vw,4.75rem)] font-semibold leading-[0.98] text-paper">
           {copy.headline}
           <br />
-          <em className="font-light italic text-gold-bright">{copy.headlineItalic}</em>
+          <em className="font-light italic text-brand-bright">{copy.headlineItalic}</em>
         </h2>
         <p className="mx-auto max-w-md text-sm font-light leading-relaxed text-mist sm:text-base">
           {copy.body}

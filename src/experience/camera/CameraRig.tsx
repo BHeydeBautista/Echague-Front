@@ -22,6 +22,7 @@ export function CameraRig() {
       4.2,
       delta,
     );
+    scrollState.smoothedProgress = smoothed.current.progress;
 
     const sample = sampleStoryboard(smoothed.current.progress);
     const time = state.clock.elapsedTime;

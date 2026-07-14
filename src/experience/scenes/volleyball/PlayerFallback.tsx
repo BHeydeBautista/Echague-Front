@@ -5,11 +5,11 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 const material = new THREE.MeshStandardMaterial({
-  color: "#ffd9a8",
-  metalness: 0.3,
+  color: "#c3d4ef",
+  metalness: 0.32,
   roughness: 0.42,
-  emissive: "#5c2c1a",
-  emissiveIntensity: 0.2,
+  emissive: "#2c3f66",
+  emissiveIntensity: 0.22,
 });
 
 const CYCLE = 4.2;

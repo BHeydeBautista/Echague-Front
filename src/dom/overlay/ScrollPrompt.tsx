@@ -20,7 +20,7 @@ export function ScrollPrompt() {
     >
       <span className="kicker text-mist">Desliza para comenzar</span>
       <div className="h-9 w-5 rounded-full border border-paper/25 p-1">
-        <div className="mx-auto h-1.5 w-1.5 animate-bounce rounded-full bg-gold" />
+        <div className="mx-auto h-1.5 w-1.5 animate-bounce rounded-full bg-brand-bright" />
       </div>
     </div>
   );

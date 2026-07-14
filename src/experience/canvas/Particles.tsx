@@ -5,6 +5,7 @@ import { useMemo, useRef } from "react";
 import * as THREE from "three";
 import { scrollState } from "@/src/lib/scrollState";
 import { sampleStoryboard } from "@/src/experience/camera/storyboard";
+import { SECTION_BOUNDS } from "@/src/lib/sections";
 
 const COUNT = 900;
 const Z_START = 14;
@@ -44,10 +45,17 @@ export function Particles() {
     const seeds = new Float32Array(COUNT);
     for (let i = 0; i < COUNT; i++) {
       const z = Z_START + Math.random() * (Z_END - Z_START);
+      // Both x and y are derived from the same radius/angle (a true
+      // cylindrical shell around the camera's general travel axis) so every
+      // particle keeps a guaranteed minimum distance from wherever the
+      // camera actually is — previously y was independent of radius, so a
+      // particle could land at e.g. x=0.3 regardless of "radius", occasionally
+      // sitting right next to the camera and ballooning into a full-screen
+      // blown-out sprite (size grows as 1/distance with sizeAttenuation).
       const radius = 3.5 + Math.random() * 7;
       const angle = Math.random() * Math.PI * 2;
       positions[i * 3] = Math.cos(angle) * radius;
-      positions[i * 3 + 1] = (Math.random() - 0.5) * 6 + 0.5;
+      positions[i * 3 + 1] = Math.sin(angle) * radius * 0.5 + 0.5;
       positions[i * 3 + 2] = z;
       seeds[i] = Math.random() * Math.PI * 2;
     }
@@ -68,9 +76,18 @@ export function Particles() {
     const sample = sampleStoryboard(scrollState.progress);
     if (material.current) {
       material.current.color.lerp(sample.keyColor, 0.04);
+      // These read as ambient dust/starlight in the open arena and court,
+      // but the exact same bright floating specks read as "outer space"
+      // once the camera is underwater — so fade them out entirely for the
+      // swim section and let Bubbles.tsx supply the (differently styled,
+      // upward-drifting) underwater particulate instead.
+      const { start, end } = SECTION_BOUNDS.swimming;
+      const p = scrollState.progress;
+      const inSwim = p >= start - 0.03 && p <= end + 0.03;
+      const targetOpacity = inSwim ? 0 : 0.55;
       material.current.opacity = THREE.MathUtils.damp(
         material.current.opacity,
-        0.55,
+        targetOpacity,
         2,
         delta,
       );
@@ -85,13 +102,13 @@ export function Particles() {
       <pointsMaterial
         ref={material}
         map={sprite}
-        size={0.09}
+        size={0.07}
         sizeAttenuation
         transparent
         opacity={0.5}
         depthWrite={false}
         blending={THREE.AdditiveBlending}
-        color="#f3d78f"
+        color="#bcd8ff"
       />
     </points>
   );

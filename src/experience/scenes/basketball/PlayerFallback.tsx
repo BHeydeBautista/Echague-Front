@@ -5,11 +5,11 @@ import { useRef } from "react";
 import * as THREE from "three";
 
 const material = new THREE.MeshStandardMaterial({
-  color: "#e7c98f",
-  metalness: 0.45,
+  color: "#a9c1e2",
+  metalness: 0.42,
   roughness: 0.45,
-  emissive: "#3a2410",
-  emissiveIntensity: 0.15,
+  emissive: "#26314a",
+  emissiveIntensity: 0.18,
 });
 
 /** Symbolic athlete silhouette, used only if the animated FBX cannot load. */

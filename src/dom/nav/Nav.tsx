@@ -33,7 +33,7 @@ export function Nav() {
       </div>
       <div className="hidden items-center gap-2 text-right sm:flex">
         <span className="kicker">Desde 1932</span>
-        <span className="h-3 w-px bg-gold/40" />
+        <span className="h-3 w-px bg-brand/40" />
         <span className="kicker text-mist">Paraná</span>
       </div>
     </div>
