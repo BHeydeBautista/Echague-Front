@@ -1,0 +1,51 @@
+"use client";
+
+import { useFrame } from "@react-three/fiber";
+import { useMemo, useRef } from "react";
+import * as THREE from "three";
+
+function makeVolleyballTexture() {
+  const size = 512;
+  const canvas = document.createElement("canvas");
+  canvas.width = size;
+  canvas.height = size;
+  const ctx = canvas.getContext("2d")!;
+  ctx.fillStyle = "#f2ece0";
+  ctx.fillRect(0, 0, size, size);
+  ctx.strokeStyle = "#c9a15e";
+  ctx.lineWidth = 8;
+  for (let i = 0; i < 3; i++) {
+    ctx.beginPath();
+    ctx.ellipse(size / 2, size / 2, size * 0.5, size * (0.12 + i * 0.12), (i * Math.PI) / 3, 0, Math.PI * 2);
+    ctx.stroke();
+  }
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  return tex;
+}
+
+const CYCLE = 4.2;
+
+/** A looping spike trajectory: rise, arc over the net, smash down, reset. */
+export function Ball() {
+  const ref = useRef<THREE.Mesh>(null);
+  const texture = useMemo(() => makeVolleyballTexture(), []);
+
+  useFrame((state) => {
+    if (!ref.current) return;
+    const t = (state.clock.elapsedTime % CYCLE) / CYCLE;
+    const up = Math.sin(Math.PI * Math.min(t / 0.55, 1)) * 2.6;
+    const across = THREE.MathUtils.lerp(0.9, -2.4, THREE.MathUtils.smoothstep(t, 0.25, 0.85));
+    const depth = THREE.MathUtils.lerp(0.6, -1.6, THREE.MathUtils.smoothstep(t, 0.4, 0.9));
+    ref.current.position.set(across, 1.1 + up, depth);
+    ref.current.rotation.x += 0.15;
+    ref.current.rotation.y += 0.1;
+  });
+
+  return (
+    <mesh ref={ref} castShadow>
+      <sphereGeometry args={[0.14, 24, 24]} />
+      <meshStandardMaterial map={texture} roughness={0.6} />
+    </mesh>
+  );
+}

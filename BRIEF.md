@@ -1,373 +1,424 @@
-# Atlético Echagüe Club
-## Creative Direction Brief
+# Club Atlético Echagüe - Interactive Website Concept
 
-You are not building a website.
+## Project Goal
 
-You are designing the digital identity of one of Argentina's most historic sports clubs.
+This is NOT the final website.
 
-Think beyond websites.
+The objective is to create a premium interactive concept that demonstrates the vision for the future official website of Club Atlético Echagüe.
 
-Think product.
-Think architecture.
-Think exhibition.
-Think experience.
+Tomorrow this project will be presented as a visual prototype.
 
-Your role is simultaneously:
+The priority is creating an unforgettable first impression.
+
+Think quality over quantity.
+
+Do not try to build the complete website.
+
+Instead, build an immersive experience that communicates prestige, tradition, sport, movement and innovation.
+
+---
+
+# Your Role
+
+You are acting as:
 
 - Creative Director
-- Brand Designer
+- Senior UX Designer
+- Senior Frontend Engineer
+- Three.js Expert
 - Motion Designer
 - Art Director
-- Senior Frontend Engineer
-- 3D Technical Artist
-- UX Designer
-- Performance Engineer
 
-You are expected to make design decisions.
+Make design decisions autonomously.
 
-Do not wait for instructions.
+If something can be improved visually, improve it.
 
-Whenever something is unspecified, choose the option that produces the highest-quality experience.
+Don't wait for approval.
 
-Never choose the easiest implementation if a better solution exists.
+Think like an Awwwards developer.
+
+---
+
+# Resources
+
+Use absolutely every available capability.
+
+Use every installed:
+
+- MCP
+- Plugin
+- Skill
+- Tool
+
+when appropriate.
+
+Choose the best technologies automatically.
+
+Do not ask unnecessary questions.
+
+---
+
+# Existing Assets
+
+## Logo
+
+Location:
+
+public/img/logo.png
+
+The logo is the hero element of the website.
+
+Treat it almost like a monument.
+
+---
+
+## Reference Image
+
+Inside:
+
+public/img/
+
+There is a screenshot named similar to:
+
+videoframe
+
+Use it as inspiration.
+
+Do not copy it.
+
+Understand its composition and visual feeling.
+
+---
+
+## 3D Models
+
+Inside:
+
+models/
+
+Available models:
+
+- volleyball.glb
+- swimming.fbx
+- Dribble.fbx
+
+Use them whenever possible.
+
+If an asset has problems loading, repairing or animating:
+
+DO NOT STOP.
+
+Replace it with procedural objects or create symbolic scenes.
+
+The presentation is more important than using every asset.
+
+---
+
+# Main Inspirations
+
+Primary inspiration:
+
+https://hashgraphvc.com/
+
+Study:
+
+- storytelling
+- transitions
+- scrolling
+- typography
+- spacing
+- premium feeling
+- animation quality
+- motion language
+
+Capture the feeling.
+
+Do not clone the design.
+
+---
+
+# Secondary Reference
+
+Club information:
+
+https://en.wikipedia.org/wiki/Atl%C3%A9tico_Echag%C3%BCe
+
+Only use this to understand:
+
+- club identity
+- history
+- sports
+- colors
+- atmosphere
+
+Ignore outdated information.
 
 ---
 
 # Design Philosophy
 
-The site must feel expensive.
+The website should feel like entering the club.
 
-Not because of luxury.
+Scrolling should feel like walking through an interactive museum dedicated to Club Atlético Echagüe.
 
-Because of care.
+Every section tells a story.
 
-Every pixel should look intentional.
+Everything has depth.
 
-Every animation should have a purpose.
+Everything moves.
 
-Every transition should feel handcrafted.
-
-Nothing should feel like a template.
-
-The visitor should immediately think:
-
-"This doesn't look like a normal club website."
+Nothing feels static.
 
 ---
 
-# Core Experience
+# Scroll Experience
 
-The website is one continuous interactive journey.
+The entire experience must revolve around cinematic parallax scrolling.
 
-It should never feel like stacked sections.
+Scrolling controls the experience.
 
-Avoid:
+Create depth using:
 
-Hero
+- camera movement
+- foreground
+- background
+- particles
+- lighting
+- floating objects
 
-↓
+Transitions must be smooth.
 
-About
-
-↓
-
-Sports
-
-↓
-
-Gallery
-
-↓
-
-Contact
-
-Instead create one continuous experience where every scene naturally transforms into the next.
-
-Scrolling should advance the story.
-
-The page should feel alive.
+Never abrupt.
 
 ---
 
-# 3D First
+# Hero
 
-The website must be designed around 3D.
+The hero must immediately impress.
 
-Not around HTML.
+The logo should be the protagonist.
 
-HTML supports the experience.
+Possible ideas:
 
-3D IS the experience.
+floating logo
 
-The camera should travel through scenes.
+cinematic lighting
 
-Objects should react.
+slow camera orbit
 
-Lighting should evolve.
+subtle fog
 
-Depth should constantly change.
+particles
 
-The visitor should always feel inside a space.
+light rays
 
----
+animated background
 
-# The Club is the Main Character
+premium typography
 
-The main character is not a person.
+soft shadows
 
-It is the club itself.
+depth
 
-Everything should revolve around its identity.
+glassmorphism
 
-The logo should become an active object.
-
-Ideas are encouraged:
-
-- assembling
-- breaking apart
-- becoming architecture
-- becoming light
-- becoming particles
-- becoming stadium geometry
-- becoming transitions
-
-The logo should evolve during the experience.
+The first impression should feel premium.
 
 ---
 
-# Storytelling
+# Sports Journey
 
-Tell a story.
+After the hero, begin an interactive journey through the sports practiced at the club.
 
-Do not dump information.
+Each sport becomes its own world.
 
-Possible progression:
+Do not simply place text.
 
-Origins
-
-↓
-
-Growth
-
-↓
-
-Community
-
-↓
-
-Sports
-
-↓
-
-Facilities
-
-↓
-
-Future
-
-↓
-
-Identity
-
-Every scene should naturally transition into the next.
+Create scenes.
 
 ---
 
-# Art Direction
+# Basketball
 
-Modern.
+Model:
 
-Editorial.
+Dribble.fbx
 
-Premium.
+If usable:
 
-Minimal.
+Animate the player.
 
-Architectural.
+If not:
 
-Calm.
+Create symbolic objects.
 
-Cinematic.
+Ideas:
 
-Never flashy.
+basketball
 
-Never futuristic for the sake of being futuristic.
+court
 
-Never gaming UI.
+stadium
 
-Never corporate.
+rim
 
-Never generic.
+moving lights
 
----
+particles
 
-# Color System
+camera movement
 
-Maximum 4 colors.
-
-Use restraint.
-
-The identity should come from composition, lighting and typography.
-
-Not from colorful gradients.
+warm lighting
 
 ---
 
-# Typography
+# Swimming
 
-Typography is one of the main design elements.
+Model:
 
-Choose the font pairing yourself.
+swimming.fbx
 
-Avoid common defaults.
+Ideas:
 
-Hierarchy should rely on:
+pool
 
-weight
+water
 
-size
+underwater ambience
 
-spacing
+caustics
 
-rhythm
+volumetric light
 
-not color.
+blue atmosphere
+
+reflections
+
+Scrolling could simulate diving underwater.
+
+---
+
+# Volleyball
+
+Model:
+
+volleyball.glb
+
+Ideas:
+
+volleyball
+
+net
+
+court
+
+sunset lighting
+
+dynamic movement
+
+camera orbit
+
+---
+
+# Visual Style
+
+Premium
+
+Elegant
+
+Modern
+
+Luxury
+
+Minimal
+
+Cinematic
+
+Immersive
+
+Sophisticated
+
+No visual clutter.
+
+Lots of breathing room.
+
+---
+
+# Colors
+
+Primary
+
+Dark Blue
+
+White
+
+Light Gray
+
+Accent
+
+Gold
+
+Very subtle cyan lighting
 
 ---
 
 # Motion
 
-Motion should whisper.
+Everything should move subtly.
 
-Never scream.
+Examples:
 
-Avoid exaggerated animations.
+floating
 
-Every movement should communicate weight.
+rotation
 
-Objects should have inertia.
+light movement
 
-Camera movement should feel cinematic.
+camera movement
 
-Transitions should never abruptly cut.
+particles
 
----
+depth
 
-# Scroll
+parallax
 
-Scrolling drives the narrative.
+hover effects
 
-Avoid simple fade-ins.
+soft transitions
 
-The world itself should react to scrolling.
-
-Camera movement is preferred over element movement.
+Never excessive.
 
 ---
 
-# Images
+# Typography
 
-Avoid generic stock photos.
+Large.
 
-Whenever possible, integrate photography naturally inside the 3D environment.
+Elegant.
 
-Photos should feel like part of the world.
+Minimal.
 
-Not rectangles placed on a page.
+Modern.
 
----
+Text supports the visuals.
 
-# Sports
-
-Do not create cards.
-
-Each sport deserves its own identity.
-
-Basketball should not look like Swimming.
-
-Swimming should not look like Volleyball.
-
-Every discipline should feel like entering another space.
+Visuals tell the story.
 
 ---
 
-# Architecture
+# Technical Stack
 
-If possible, recreate simplified versions of iconic parts of the club in stylized 3D.
-
-Do not pursue photorealism.
-
-Pursue atmosphere.
-
----
-
-# Sound
-
-If subtle ambient sound improves immersion, consider it.
-
-Never autoplay loud sounds.
-
-Sound should be optional.
-
----
-
-# Mobile
-
-Do NOT compress the desktop version.
-
-Design a different experience.
-
-Maintain immersion while respecting performance.
-
----
-
-# Performance
-
-Performance is mandatory.
-
-Use LOD.
-
-Lazy loading.
-
-Asset streaming.
-
-Texture compression.
-
-Efficient shaders.
-
-The experience should remain smooth.
-
----
-
-# Accessibility
-
-Respect accessibility.
-
-Keyboard navigation.
-
-Reduced motion mode.
-
-Semantic HTML where applicable.
-
-Readable typography.
-
-Proper contrast.
-
----
-
-# Technology
-
-Prefer modern technologies.
-
-Next.js
+Prefer:
 
 React
 
-TypeScript
+Vite
+
+Three.js
 
 React Three Fiber
 
-Three.js
+Drei
 
 GSAP
 
@@ -375,57 +426,66 @@ Framer Motion
 
 Lenis
 
-The architecture should remain modular and scalable.
+Post Processing
+
+HDR Environment
+
+Bloom
+
+SSAO
+
+Use whatever produces the highest quality result.
 
 ---
 
-# What NOT to build
+# Performance
 
-Do not build:
+Optimize enough for smooth presentation.
 
-a template
-
-a landing page
-
-a corporate website
-
-a Bootstrap site
-
-cards everywhere
-
-giant paragraphs
-
-image sliders
-
-boring galleries
-
-floating boxes
+Visual quality has higher priority than production optimization.
 
 ---
 
-# What TO build
+# Final Goal
 
-Build an experience.
+When someone finishes scrolling they should think:
 
-Build something memorable.
+"This club deserves this website."
 
-If someone visits for 30 seconds, they should remember it.
+The website should feel worthy of an Awwwards nomination.
 
-The website should become a portfolio-quality piece capable of being featured on Awwwards or FWA.
+---
 
-Aim for excellence rather than simplicity.
+# Creative Freedom
 
-Whenever multiple design solutions exist, choose the one with the strongest artistic direction, provided performance remains excellent.
+You have permission to improve every idea.
 
+If something can be made more beautiful, elegant or immersive:
 
-# References
+Do it.
 
-The provided references are NOT to be copied.
+Do not ask.
 
-Extract their principles.
+Take initiative.
 
-Study why they feel premium.
+---
 
-Apply those principles to create an identity unique to Atlético Echagüe Club.
+# IMPORTANT
 
-The final result should be unmistakably Echagüe, not an imitation of another brand.
+If time is limited:
+
+Prioritize quality over quantity.
+
+I prefer:
+
+One incredible Hero
+
+Three amazing sports sections
+
+Perfect scrolling
+
+Amazing animations
+
+Instead of many incomplete sections.
+
+Every visible screen should look presentation-ready.
