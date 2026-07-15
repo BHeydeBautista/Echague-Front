@@ -23,7 +23,7 @@ export function PlayerFallback() {
     const t = (state.clock.elapsedTime % CYCLE) / CYCLE;
     const jump = Math.sin(Math.PI * Math.min(t / 0.55, 1));
     if (group.current) {
-      group.current.position.y = jump * 1.1;
+      group.current.position.y = jump * 1.65;
       group.current.rotation.y = -0.3 + jump * 0.2;
     }
     if (armR.current) {
@@ -32,7 +32,7 @@ export function PlayerFallback() {
   });
 
   return (
-    <group ref={group} position={[0.4, 0, 0.6]}>
+    <group ref={group} position={[0.4, 0, 0.6]} scale={1.5}>
       <mesh position={[0, 1.58, 0]} castShadow>
         <sphereGeometry args={[0.15, 20, 20]} />
         <primitive object={material} attach="material" />

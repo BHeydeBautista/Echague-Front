@@ -72,8 +72,16 @@ export const KEYFRAMES: Keyframe[] = [
   // Fog kept tight here so the volleyball court doesn't bleed into view
   // while we're still meant to be underwater.
   kf(B.swimming.end, [0, -0.3, -30], [0, -1.4, -38], 46, "#082a42", 6, 12, "#d8e6ff", 1.6, "#7d93c2", 0.65, "#0d1420", 0.55),
-  // Pulled back from the player, camera centered on them as the subject.
-  kf(mid(B.volleyball.start, B.volleyball.end), [-4, 2, -46], [0, 1.2, -49], 46, "#080b16", 9, 30, "#eaf1ff", 1.95, "#a9c1e2", 0.8, "#0e1420", 0.55),
+  // The rig's own bind-pose bounding box (what normalizeAndGround scales
+  // against) reads much taller than the character's actual idle silhouette,
+  // so TARGET_HEIGHT in Player.tsx had to be pushed well past a literal
+  // "1.9m person" (see the comment there) to make the athlete read at
+  // basketball-like presence on screen. Distance/fov here are tuned against
+  // that corrected scale, framed so the compact stance still looks like a
+  // real subject rather than a speck near the net — accepting that the
+  // hit's peak reach may brush the top of frame, which lands as the
+  // dramatic high point of the jump rather than a bug.
+  kf(mid(B.volleyball.start, B.volleyball.end), [-1.45, 3.65, -45.4], [0.4, 2.85, -48.4], 60, "#080b16", 9, 32, "#eaf1ff", 1.95, "#a9c1e2", 0.8, "#0e1420", 0.55),
   // --- pulling back and journeying home, past the realms we've visited ---
   kf(B.volleyball.end, [0, 2, -51], [0, 0.6, -53], 42, "#05070d", 10, 22, "#bcd8ff", 1.3, "#7d93c2", 0.6, "#10182c", 0.5),
   kf(mid(B.outro.start, B.outro.end), [3, 2.6, -22], [0, 1, -12], 42, "#05070d", 8, 20, "#bcd8ff", 1.4, "#7d93c2", 0.7, "#10182c", 0.55),

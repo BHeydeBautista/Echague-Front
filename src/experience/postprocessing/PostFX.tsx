@@ -12,7 +12,11 @@ import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import { scrollState } from "@/src/lib/scrollState";
 
-export function PostFX() {
+interface Props {
+  mobile?: boolean;
+}
+
+export function PostFX({ mobile = false }: Props) {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const caRef = useRef<any>(null);
 
@@ -24,12 +28,12 @@ export function PostFX() {
   });
 
   return (
-    <EffectComposer multisampling={4}>
+    <EffectComposer multisampling={mobile ? 0 : 4}>
       <Bloom
         intensity={0.85}
         luminanceThreshold={0.28}
         luminanceSmoothing={0.35}
-        mipmapBlur
+        mipmapBlur={!mobile}
         radius={0.8}
       />
       <ChromaticAberration ref={caRef} blendFunction={BlendFunction.NORMAL} />

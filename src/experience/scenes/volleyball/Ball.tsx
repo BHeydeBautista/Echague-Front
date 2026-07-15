@@ -48,7 +48,7 @@ export function Ball({ handBoneRef }: Props = {}) {
       hand.getWorldPosition(worldPos);
       ref.current.parent.worldToLocal(worldPos);
       // rest just above/in front of the hitting hand, as if palmed for the hit
-      ref.current.position.set(worldPos.x, worldPos.y + 0.12, worldPos.z + 0.08);
+      ref.current.position.set(worldPos.x, worldPos.y + 0.18, worldPos.z + 0.12);
     } else {
       const t = (state.clock.elapsedTime % CYCLE) / CYCLE;
       const up = Math.sin(Math.PI * Math.min(t / 0.55, 1)) * 2.6;
@@ -62,7 +62,7 @@ export function Ball({ handBoneRef }: Props = {}) {
 
   return (
     <mesh ref={ref} castShadow>
-      <sphereGeometry args={[0.11, 24, 24]} />
+      <sphereGeometry args={[0.13, 24, 24]} />
       <meshStandardMaterial map={texture} roughness={0.6} />
     </mesh>
   );

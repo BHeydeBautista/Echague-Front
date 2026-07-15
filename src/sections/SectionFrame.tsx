@@ -39,9 +39,9 @@ export function SectionFrame({ id, align = "left", justify = "center", children 
   const justifyClass = justify === "end" ? "justify-end pb-28 sm:pb-32" : "justify-center";
 
   return (
-    <section ref={sectionRef} style={{ height: `${SECTION_VH[id]}vh` }} className="relative">
+    <section ref={sectionRef} style={{ height: `${SECTION_VH[id]}dvh` }} className="relative">
       <div
-        className={`sticky top-0 flex h-screen w-full flex-col px-6 sm:px-10 lg:px-20 ${justifyClass}`}
+        className={`sticky top-0 flex h-dvh w-full flex-col px-6 sm:px-10 lg:px-20 ${justifyClass}`}
       >
         <div ref={contentRef} className={`flex max-w-2xl flex-col gap-5 ${alignClass}`}>
           {children}
