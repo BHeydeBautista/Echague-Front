@@ -66,7 +66,9 @@ const RIPPLE_SEGMENTS = 48;
 const POOL_WIDTH = 22;
 const POOL_LENGTH = 16;
 const FLOOR_Y = -2.2;
-const WATER_Y = 1.3;
+// Exported so the swimmer can be placed right at this rippling surface
+// instead of down near the floor.
+export const WATER_Y = 1.3;
 
 /** A deliberately simple pool: floor + lane lines + drifting caustics +
  * a matte water surface. No side walls — those only ever showed up as an

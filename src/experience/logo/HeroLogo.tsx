@@ -74,7 +74,14 @@ export function HeroLogo() {
     if (outer.current) {
       outer.current.rotation.y = Math.sin(state.clock.elapsedTime * 0.12) * 0.22 +
         scrollState.pointer.x * 0.18;
-      outer.current.rotation.x = scrollState.pointer.y * -0.08;
+      // scroll momentum tips the crest back like a heavy object being pushed,
+      // then the damp settles it — weight, not just rotation
+      outer.current.rotation.x = THREE.MathUtils.damp(
+        outer.current.rotation.x,
+        scrollState.pointer.y * -0.08 + THREE.MathUtils.clamp(scrollState.velocity, -1, 1) * 0.14,
+        4,
+        delta,
+      );
 
       // recede + dim as the story moves past the hero, held near the origin
       const heroFocus = THREE.MathUtils.clamp(1 - scrollState.progress * 3.2, 0, 1);
@@ -92,6 +99,10 @@ export function HeroLogo() {
 
   return (
     <group position={[0, 0.1, 0]}>
+      {/* fog=false makes this halo pierce the storyboard fog, so during the
+          outro's journey home the crest reads as a distant beacon growing
+          brighter as we return — instead of an empty starfield until the
+          final frames. */}
       <mesh ref={glowRef} renderOrder={-1}>
         <planeGeometry args={[1, 1]} />
         <meshBasicMaterial
@@ -99,19 +110,25 @@ export function HeroLogo() {
           transparent
           depthWrite={false}
           blending={THREE.AdditiveBlending}
+          fog={false}
         />
       </mesh>
 
+      {/* warm gold kiss from low front-right so the trim and plinth edges
+          actually read as gold, not just in silhouette */}
+      <pointLight position={[2.2, -0.8, 2.6]} intensity={1.2} distance={7} color="#d4b04a" />
+
       <group ref={outer}>
         <Float floatIntensity={0.7} rotationIntensity={0.35} speed={1.4}>
-          {/* brand-blue chrome trim, slightly larger, sits behind the navy plinth */}
+          {/* gold trim, slightly larger, sits behind the navy plinth — the
+              palette's gold accent, catching the rim light like a trophy edge */}
           <mesh geometry={frameGeo} position={[0, 0, -0.08]} castShadow receiveShadow>
             <meshStandardMaterial
-              color="#a9c1e2"
-              metalness={0.9}
-              roughness={0.25}
-              emissive="#2c3f66"
-              emissiveIntensity={0.3}
+              color="#c9a227"
+              metalness={0.92}
+              roughness={0.22}
+              emissive="#57430f"
+              emissiveIntensity={0.35}
             />
           </mesh>
 

@@ -10,13 +10,31 @@ function makeFloorTexture() {
   canvas.height = size;
   const ctx = canvas.getContext("2d")!;
 
+  // warm parquet base — dark enough to sit in the navy world, but
+  // unmistakably wood under the amber lamps
   const base = ctx.createLinearGradient(0, 0, 0, size);
-  base.addColorStop(0, "#141821");
-  base.addColorStop(1, "#0a0d13");
+  base.addColorStop(0, "#2a1c10");
+  base.addColorStop(0.5, "#20150c");
+  base.addColorStop(1, "#150d07");
   ctx.fillStyle = base;
   ctx.fillRect(0, 0, size, size);
 
-  ctx.strokeStyle = "rgba(188,216,255,0.4)";
+  // plank seams
+  ctx.strokeStyle = "rgba(0,0,0,0.35)";
+  ctx.lineWidth = 2;
+  for (let x = 0; x <= size; x += size / 12) {
+    ctx.beginPath();
+    ctx.moveTo(x, 0);
+    ctx.lineTo(x, size);
+    ctx.stroke();
+  }
+  // subtle grain variation per plank
+  for (let i = 0; i < 12; i++) {
+    ctx.fillStyle = `rgba(255, 190, 120, ${0.02 + Math.random() * 0.03})`;
+    ctx.fillRect((i * size) / 12, 0, size / 12, size);
+  }
+
+  ctx.strokeStyle = "rgba(255,224,178,0.5)";
   ctx.lineWidth = 4;
   ctx.strokeRect(40, 40, size - 80, size - 80);
 
@@ -29,7 +47,7 @@ function makeFloorTexture() {
   ctx.lineTo(size - 40, size / 2);
   ctx.stroke();
 
-  ctx.strokeStyle = "rgba(188,216,255,0.25)";
+  ctx.strokeStyle = "rgba(255,224,178,0.3)";
   ctx.beginPath();
   ctx.arc(size / 2, size - 40, size * 0.32, Math.PI, 0);
   ctx.stroke();
@@ -92,15 +110,16 @@ export function Court() {
         })}
       </group>
 
-      {/* stadium light beams */}
+      {/* stadium light beams — tungsten amber, the "warm amber court
+          lighting" the section copy promises */}
       {[[-4.5, -3], [4.5, -3], [-4.5, 3], [4.5, 3]].map(([x, z], i) => (
         <group key={i} position={[x, 8, z]} rotation={[Math.PI, 0, 0]}>
           <mesh>
             <coneGeometry args={[1.6, 7, 24, 1, true]} />
             <meshBasicMaterial
-              color="#bcd8ff"
+              color="#ffc27a"
               transparent
-              opacity={0.05}
+              opacity={0.06}
               side={THREE.DoubleSide}
               depthWrite={false}
             />
@@ -109,8 +128,8 @@ export function Court() {
             position={[0, 0, 0]}
             angle={0.5}
             penumbra={0.6}
-            intensity={6}
-            color="#d8e6ff"
+            intensity={7}
+            color="#ffcf8e"
             distance={16}
           />
         </group>

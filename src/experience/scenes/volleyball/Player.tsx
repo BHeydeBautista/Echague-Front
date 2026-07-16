@@ -44,15 +44,17 @@ export function VolleyballPlayer({ onHandBone }: Props) {
     // so grounding must be based on the lowest point across the whole
     // cycle, not whichever pose happens to be active at mount.
     //
-    // 2.85 is not a literal "person's height": this GLB's bind-pose bounding
+    // 3.6 is not a literal "person's height": this GLB's bind-pose bounding
     // box (what normalizeAndGround scales against) reads much taller than
     // the character's actual idle silhouette, so a literal ~1.9 left the
     // athlete looking tiny next to the net — a scale mismatch confirmed by
     // sampling the rig's true per-frame world-space height during playback
     // (via a temporary diagnostic), which showed the idle stance rendering
-    // at a fraction of the requested height. This value was tuned up until
-    // the on-screen presence matched the basketball/swimming scenes.
-    normalizeAndGround(cloned, 2.85, gltf.animations[0]);
+    // at a fraction of the requested height. Tuned against screenshots at
+    // the volleyball keyframe until the athlete carries real presence at
+    // the net; the spike's peak reach brushing the top of frame is the
+    // shot's dramatic high point, not a bug.
+    normalizeAndGround(cloned, 3.6, gltf.animations[0]);
     applyStylizedMaterial(cloned, athleteMaterial);
     const hand =
       cloned.getObjectByName("Bony_rWristJ_0120") ??

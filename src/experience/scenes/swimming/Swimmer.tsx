@@ -3,6 +3,16 @@
 import { useFrame } from "@react-three/fiber";
 import { useRef } from "react";
 import * as THREE from "three";
+import { WATER_Y } from "./Pool";
+
+// Straddles the rippling water surface mesh instead of drifting down near
+// the floor, so the swimmer reads as cutting through the actual waves. The
+// offset from WATER_Y (rather than using it directly) accounts for the
+// camera's steep downward angle in this section — tuned by comparing
+// screenshots across the storyboard's swimming keyframes until the body
+// sat right on the surface line instead of floating above or sinking below
+// it.
+const SWIM_Y = WATER_Y - 1.6;
 
 const material = new THREE.MeshStandardMaterial({
   color: "#cfe8ff",
@@ -29,53 +39,76 @@ export function Swimmer() {
   useFrame((state) => {
     const t = state.clock.elapsedTime * 2.2;
     if (group.current) {
-      group.current.position.y = -0.4 + Math.sin(t) * 0.08;
+      group.current.position.y = SWIM_Y + Math.sin(t) * 0.06;
       // Slow lengthwise drift so the swimmer visibly crosses the lane from
       // side to side, reading unmistakably as "swimming across the pool".
       group.current.position.x = Math.sin(state.clock.elapsedTime * 0.12) * 2.6;
       // Freestyle roll: the body banks slightly with each stroke.
-      group.current.rotation.z = Math.sin(t) * 0.1;
+      group.current.rotation.z = Math.sin(t) * 0.06;
     }
-    if (armL.current) armL.current.rotation.x = Math.sin(t) * 0.9 + 0.3;
-    if (armR.current) armR.current.rotation.x = Math.sin(t + Math.PI) * 0.9 + 0.3;
-    if (legL.current) legL.current.rotation.x = Math.sin(t * 1.6 + Math.PI) * 0.4;
-    if (legR.current) legR.current.rotation.x = Math.sin(t * 1.6) * 0.4;
-    if (head.current) head.current.rotation.z = Math.sin(t * 0.5) * 0.18;
+    // tighter stroke arc — big amplitudes made the silhouette splay into an
+    // "X" from the section's side-on camera; a contained freestyle reads
+    // far more like an actual swimmer
+    if (armL.current) armL.current.rotation.x = Math.sin(t) * 0.65 + 0.15;
+    if (armR.current) armR.current.rotation.x = Math.sin(t + Math.PI) * 0.65 + 0.15;
+    if (legL.current) legL.current.rotation.x = Math.sin(t * 1.6 + Math.PI) * 0.28;
+    if (legR.current) legR.current.rotation.x = Math.sin(t * 1.6) * 0.28;
+    if (head.current) head.current.rotation.z = Math.sin(t * 0.5) * 0.14;
   });
 
   return (
-    <group ref={group} position={[0, -0.4, 0]} rotation={[0, Math.PI / 2, 0]}>
-      <group ref={head} position={[0, 0, 0.95]}>
+    <group ref={group} position={[0, SWIM_Y, 0]} rotation={[0, Math.PI / 2, 0]}>
+      <group ref={head} position={[0, 0, 0.98]}>
         <mesh castShadow>
-          <sphereGeometry args={[0.14, 20, 20]} />
+          <sphereGeometry args={[0.15, 20, 20]} />
           <primitive object={material} attach="material" />
         </mesh>
       </group>
-      <mesh position={[0, 0, 0.35]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-        <capsuleGeometry args={[0.17, 0.85, 6, 12]} />
+      {/* shoulders — a short crossbar that gives the silhouette a real
+          upper body instead of three parallel sticks */}
+      <mesh position={[0, 0, 0.72]} rotation={[0, 0, Math.PI / 2]} castShadow>
+        <capsuleGeometry args={[0.085, 0.2, 6, 10]} />
         <primitive object={material} attach="material" />
       </mesh>
-      <group ref={armL} position={[0.24, 0, 0.65]}>
+      {/* torso, tapering into hips */}
+      <mesh position={[0, 0, 0.35]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <capsuleGeometry args={[0.19, 0.8, 6, 12]} />
+        <primitive object={material} attach="material" />
+      </mesh>
+      <mesh position={[0, 0, -0.18]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+        <capsuleGeometry args={[0.14, 0.35, 6, 12]} />
+        <primitive object={material} attach="material" />
+      </mesh>
+      <group ref={armL} position={[0.2, 0, 0.72]}>
         <mesh position={[0, 0, 0.45]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-          <capsuleGeometry args={[0.055, 0.85, 4, 8]} />
+          <capsuleGeometry args={[0.075, 0.85, 4, 8]} />
+          <primitive object={material} attach="material" />
+        </mesh>
+        {/* hand */}
+        <mesh position={[0, 0, 0.95]} castShadow>
+          <sphereGeometry args={[0.085, 10, 10]} />
           <primitive object={material} attach="material" />
         </mesh>
       </group>
-      <group ref={armR} position={[-0.24, 0, 0.65]}>
+      <group ref={armR} position={[-0.2, 0, 0.72]}>
         <mesh position={[0, 0, 0.45]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-          <capsuleGeometry args={[0.055, 0.85, 4, 8]} />
+          <capsuleGeometry args={[0.075, 0.85, 4, 8]} />
+          <primitive object={material} attach="material" />
+        </mesh>
+        <mesh position={[0, 0, 0.95]} castShadow>
+          <sphereGeometry args={[0.085, 10, 10]} />
           <primitive object={material} attach="material" />
         </mesh>
       </group>
-      <group ref={legL} position={[0.1, 0, -0.35]}>
-        <mesh position={[0, 0, -0.4]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-          <capsuleGeometry args={[0.07, 0.75, 4, 8]} />
+      <group ref={legL} position={[0.11, 0, -0.35]}>
+        <mesh position={[0, 0, -0.42]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+          <capsuleGeometry args={[0.09, 0.8, 4, 8]} />
           <primitive object={material} attach="material" />
         </mesh>
       </group>
-      <group ref={legR} position={[-0.1, 0, -0.35]}>
-        <mesh position={[0, 0, -0.4]} rotation={[Math.PI / 2, 0, 0]} castShadow>
-          <capsuleGeometry args={[0.07, 0.75, 4, 8]} />
+      <group ref={legR} position={[-0.11, 0, -0.35]}>
+        <mesh position={[0, 0, -0.42]} rotation={[Math.PI / 2, 0, 0]} castShadow>
+          <capsuleGeometry args={[0.09, 0.8, 4, 8]} />
           <primitive object={material} attach="material" />
         </mesh>
       </group>

@@ -7,6 +7,8 @@ export interface SectionCopy {
   headline: string;
   headlineItalic: string;
   body: string;
+  /** Optional call-to-action label (only the closing section uses one). */
+  cta?: string;
 }
 
 export const SECTION_COPY: Record<SectionId, SectionCopy> = {
@@ -49,5 +51,6 @@ export const SECTION_COPY: Record<SectionId, SectionCopy> = {
     headline: "Este club",
     headlineItalic: "merece este futuro.",
     body: "Este es solo un concepto. La versión completa está por construirse — con la misma prestancia con la que se construyó esta historia.",
+    cta: "Volver al origen",
   },
 };

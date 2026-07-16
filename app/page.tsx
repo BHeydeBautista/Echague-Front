@@ -1,10 +1,13 @@
 "use client";
 
 import { Experience } from "@/src/experience/canvas/Experience";
+import { CinematicLayer } from "@/src/components/cinematic/CinematicLayer";
 import { SmoothScroll } from "@/src/scroll/SmoothScroll";
 import { Nav } from "@/src/dom/nav/Nav";
 import { ProgressRail } from "@/src/dom/overlay/ProgressRail";
 import { ScrollPrompt } from "@/src/dom/overlay/ScrollPrompt";
+import { Atmosphere, Grain } from "@/src/dom/overlay/Atmosphere";
+import { Cursor } from "@/src/dom/cursor/Cursor";
 import { Loader } from "@/src/dom/loader/Loader";
 import { HeroSection } from "@/src/sections/HeroSection";
 import { BasketballSection } from "@/src/sections/disciplines/BasketballSection";
@@ -16,6 +19,8 @@ export default function Home() {
   return (
     <SmoothScroll>
       <Experience />
+      <CinematicLayer />
+      <Atmosphere />
       <Nav />
       <ProgressRail />
       <ScrollPrompt />
@@ -26,6 +31,8 @@ export default function Home() {
         <VolleyballSection />
         <OutroSection />
       </main>
+      <Grain />
+      <Cursor />
       <Loader />
     </SmoothScroll>
   );

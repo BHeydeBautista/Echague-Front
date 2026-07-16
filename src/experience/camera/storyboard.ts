@@ -53,14 +53,18 @@ const B = SECTION_BOUNDS;
 const mid = (a: number, b: number) => (a + b) / 2;
 
 export const KEYFRAMES: Keyframe[] = [
-  // --- HERO: the crest floats in a dark, reverent void ---
-  kf(B.hero.start, [0, 0.3, 7.6], [0, 0.15, 0], 38, "#05070d", 6, 26, "#bcd8ff", 1.2, "#7d93c2", 0.6, "#10182c", 0.5),
-  kf(mid(B.hero.start, B.hero.end), [2.6, 0.9, 5.2], [0, 0.1, 0], 40, "#05070d", 6, 25, "#bcd8ff", 1.35, "#7d93c2", 0.75, "#10182c", 0.5),
-  // --- into the arena: a cool, brand-lit basketball world ---
-  kf(B.hero.end, [3.6, 1.7, -6], [0, 0.6, -13], 46, "#070a12", 8, 34, "#cfe0ff", 1.75, "#7d93c2", 0.65, "#0d1420", 0.5),
+  // --- HERO: the crest floats in a dark, reverent void, museum-lit —
+  // cool key with a gold rim tracing the shield's edge (navy + gold is the
+  // club palette; the gold reads as the "spotlight on a trophy" accent) ---
+  kf(B.hero.start, [0, 0.3, 7.6], [0, 0.15, 0], 38, "#05070d", 6, 26, "#bcd8ff", 1.2, "#c9a227", 0.85, "#10182c", 0.5),
+  kf(mid(B.hero.start, B.hero.end), [2.6, 0.9, 5.2], [0, 0.1, 0], 40, "#05070d", 6, 25, "#bcd8ff", 1.35, "#d4b04a", 1.0, "#10182c", 0.5),
+  // --- into the arena: warm amber court light, navy shadows — the copy
+  // promises "warm amber court lighting", so the key goes tungsten here
+  // while the rim stays cool for separation ---
+  kf(B.hero.end, [3.6, 1.7, -6], [0, 0.6, -13], 46, "#0a0a10", 8, 34, "#ffd9a0", 1.8, "#7d93c2", 0.7, "#171008", 0.55),
   // Pulled back from the player for a balanced action shot (player + ball +
   // hoop all read together, instead of a tight, disconnected close-up).
-  kf(mid(B.basketball.start, B.basketball.end), [-5, 3.2, -10], [0, 1.1, -18], 48, "#080c15", 9, 32, "#e8f0ff", 2.05, "#a9c1e2", 0.75, "#0e1522", 0.55),
+  kf(mid(B.basketball.start, B.basketball.end), [-5, 3.2, -10], [0, 1.1, -18], 48, "#0c0b10", 9, 32, "#ffcf8e", 2.2, "#a9c1e2", 0.85, "#1a1209", 0.6),
   // --- diving down into the pool: a fixed underwater viewpoint watching
   // the swimmer cross the lane left-to-right, rather than chasing behind
   // them — much easier to read as "swimming across a pool" than a
@@ -81,14 +85,20 @@ export const KEYFRAMES: Keyframe[] = [
   // real subject rather than a speck near the net — accepting that the
   // hit's peak reach may brush the top of frame, which lands as the
   // dramatic high point of the jump rather than a bug.
-  kf(mid(B.volleyball.start, B.volleyball.end), [-1.45, 3.65, -45.4], [0.4, 2.85, -48.4], 60, "#080b16", 9, 32, "#eaf1ff", 1.95, "#a9c1e2", 0.8, "#0e1420", 0.55),
+  // Sunset grade: warm low key + ember rim against a darkening indigo sky —
+  // "el punto se gana en el aire" happens at golden hour, not at midnight.
+  // Ambient lifted so the court and player actually read on screen.
+  kf(mid(B.volleyball.start, B.volleyball.end), [-1.45, 3.65, -45.4], [0.4, 2.85, -48.4], 60, "#100a14", 9, 34, "#ffb27a", 2.3, "#ff8a50", 1.1, "#1b1210", 0.75),
   // --- pulling back and journeying home, past the realms we've visited ---
-  kf(B.volleyball.end, [0, 2, -51], [0, 0.6, -53], 42, "#05070d", 10, 22, "#bcd8ff", 1.3, "#7d93c2", 0.6, "#10182c", 0.5),
-  kf(mid(B.outro.start, B.outro.end), [3, 2.6, -22], [0, 1, -12], 42, "#05070d", 8, 20, "#bcd8ff", 1.4, "#7d93c2", 0.7, "#10182c", 0.55),
+  kf(B.volleyball.end, [0, 2, -51], [0, 0.6, -53], 42, "#0a070d", 10, 24, "#e8c990", 1.4, "#c9a227", 0.7, "#12101c", 0.55),
+  // fogFar opened up so the crest (at the origin, ~22 units ahead) emerges
+  // out of the darkness as we travel back — the "journey home" reads
+  // visually instead of being an empty starfield.
+  kf(mid(B.outro.start, B.outro.end), [3, 2.6, -22], [0, 0.4, -4], 42, "#05070d", 8, 34, "#bcd8ff", 1.4, "#c9a227", 0.9, "#10182c", 0.55),
   // --- full circle: back where we began, the crest whole and eternal ---
   // Fog is kept tight here so the arena/pool/court we just passed stay
   // swallowed in darkness, leaving only the crest sharp in frame.
-  kf(B.outro.end, [0, 1, 6.8], [0, 0.2, 0], 38, "#05070d", 6, 20, "#d8e6ff", 1.6, "#7d93c2", 0.85, "#10182c", 0.6),
+  kf(B.outro.end, [0, 1, 6.8], [0, 0.2, 0], 38, "#05070d", 6, 20, "#d8e6ff", 1.6, "#c9a227", 1.0, "#10182c", 0.6),
 ];
 
 function smoothstep(x: number) {
